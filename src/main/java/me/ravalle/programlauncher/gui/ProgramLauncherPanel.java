@@ -51,9 +51,9 @@ public class ProgramLauncherPanel {
                     }
 
                     JPopupMenu menu = new JPopupMenu();
-                    JMenuItem addBtn = new JMenuItem("Add");
+                    JMenuItem addBtn = new JMenuItem("添加");
                     addBtn.addActionListener(e2 -> {
-                        FileDialog fd = new FileDialog((Frame) null, "Choose a program");
+                        FileDialog fd = new FileDialog((Frame) null, "选择一个程序");
                         fd.setMode(FileDialog.LOAD);
                         fd.setMultipleMode(true);
                         fd.setVisible(true);
@@ -61,7 +61,7 @@ public class ProgramLauncherPanel {
                         fd.dispose();
                         saveAndReloadGUI();
                     });
-                    JMenuItem removeBtn = new JMenuItem("Remove");
+                    JMenuItem removeBtn = new JMenuItem("移除");
                     removeBtn.addActionListener(e1 -> {
                         launchPrograms.getSelectedValuesList().forEach(ProgramLauncherSettings.getInstance().launchProgramPaths::remove);
                         saveAndReloadGUI();
@@ -127,10 +127,10 @@ public class ProgramLauncherPanel {
             item.addActionListener(e -> setDotMinecraftPath(item.getText()));
             menu.add(item);
         });
-        JMenuItem addOther = new JMenuItem("Search for a different instance...");
+        JMenuItem addOther = new JMenuItem("选择其他的实例……");
         addOther.addActionListener(e -> {
             JFileChooser fc = new JFileChooser();
-            fc.setDialogTitle("Choose a .minecraft folder");
+            fc.setDialogTitle("选择到.minecraft或minecraft文件夹");
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fc.showDialog(component, "OK");
             setDotMinecraftPath(fc.getSelectedFile().toString());
@@ -141,9 +141,9 @@ public class ProgramLauncherPanel {
 
     private void setLauncherExecutablePathPopup(Component component, int x, int y) {
         JPopupMenu menu = new JPopupMenu();
-        JMenuItem add = new JMenuItem("Search for a launcher executable...");
+        JMenuItem add = new JMenuItem("选择启动器可执行文件");
         add.addActionListener(e -> {
-            FileDialog fd = new FileDialog((Frame) null, "Select your Minecraft launcher's .exe file");
+            FileDialog fd = new FileDialog((Frame) null, "选择你的Minecraft启动器的.exe可执行文件");
             fd.setMode(FileDialog.LOAD);
             fd.setMultipleMode(false);
             fd.setVisible(true);
@@ -180,12 +180,12 @@ public class ProgramLauncherPanel {
         ProgramLauncherSettings.getInstance().launchProgramPaths.forEach(launchProgramsListModel::addElement);
 
         launchMCInstance.setSelected(ProgramLauncherSettings.getInstance().launchMC);
-        btnLaunchProgsNow.setText("Launch Programs" + (ProgramLauncherSettings.getInstance().launchMC ? " and Minecraft" : "") + " now");
-        launchProgramsWhenJingleOpens.setText("Launch Programs" + (ProgramLauncherSettings.getInstance().launchMC ? " and Minecraft" : "") + " when Jingle opens");
+        btnLaunchProgsNow.setText("启动程序" + (ProgramLauncherSettings.getInstance().launchMC ? "和我的世界实例" : ""));
+        launchProgramsWhenJingleOpens.setText("程序" + (ProgramLauncherSettings.getInstance().launchMC ? "和我的世界实例" : "") + "随Jingle启动");
         instanceLaunchPath.setEnabled(ProgramLauncherSettings.getInstance().launchMC);
-        instanceLaunchPath.setText("Instance path: " + ProgramLauncherSettings.getInstance().dotMinecraftPath);
+        instanceLaunchPath.setText("实例路径：" + ProgramLauncherSettings.getInstance().dotMinecraftPath);
 
-        launcherExecutablePath.setText("Launcher executable: " + ProgramLauncherSettings.getInstance().launcherExecutable);
+        launcherExecutablePath.setText("启动器路径： " + ProgramLauncherSettings.getInstance().launcherExecutable);
         launcherExecutablePath.setEnabled(ProgramLauncherSettings.getInstance().launchMC);
 
         JingleGUI.get().refreshQuickActions();
@@ -202,7 +202,7 @@ public class ProgramLauncherPanel {
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayoutManager(7, 3, new Insets(5, 5, 5, 5), -1, -1));
         lblTitle = new JLabel();
-        lblTitle.setText("Right click to add or remove programs");
+        lblTitle.setText("右键添加或移除程序");
         mainPanel.add(lblTitle, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer1 = new Spacer();
         mainPanel.add(spacer1, new GridConstraints(2, 1, 2, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
@@ -215,7 +215,7 @@ public class ProgramLauncherPanel {
         btnLaunchProgsNow.setText("Launch Programs Now");
         mainPanel.add(btnLaunchProgsNow, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         launchMCInstance = new JCheckBox();
-        launchMCInstance.setText("Launch Minecraft Instance (requires MultiMC or Prism)");
+        launchMCInstance.setText("启动 Minecraft 实例（需要 MultiMC 或 Prism启动器）");
         mainPanel.add(launchMCInstance, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         instanceLaunchPath = new JButton();
         instanceLaunchPath.setText("Instance path:");
