@@ -64,7 +64,7 @@ public class ProgramLauncher {
             ProgramLauncherSettings settings = ProgramLauncherSettings.getInstance();
             boolean launchMC = ProgramLauncherSettings.getInstance().launchMC;
             boolean anyPrograms = !settings.launchProgramPaths.isEmpty();
-            return JingleGUI.makeButton((launchMC && !anyPrograms) ? ("Launch Minecraft") : ("Launch Programs" + (launchMC ? "/MC" : "")),
+            return JingleGUI.makeButton((launchMC && !anyPrograms) ? ("启动 Minecraft 实例") : ("启动程序" + (launchMC ? "和 MC 实例" : "")),
                     () -> {
                         new Thread(ProgramLauncher::launchNotOpenPrograms).start();
                         if (launchMC) {
@@ -72,7 +72,7 @@ public class ProgramLauncher {
                         }
                     },
                     () -> JingleGUI.get().openTab(programLauncherPanel),
-                    "Right Click to Configure",
+                    "右键点击进行配置",
                     anyPrograms || settings.launchMC);
         });
     }

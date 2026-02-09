@@ -203,26 +203,29 @@ public class ProgramLauncherPanel {
         mainPanel.setLayout(new GridLayoutManager(7, 3, new Insets(5, 5, 5, 5), -1, -1));
         lblTitle = new JLabel();
         lblTitle.setText("右键添加或移除程序");
-        mainPanel.add(lblTitle, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(lblTitle, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer1 = new Spacer();
         mainPanel.add(spacer1, new GridConstraints(2, 1, 2, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         launchProgramsWhenJingleOpens = new JCheckBox();
-        launchProgramsWhenJingleOpens.setText("Launch programs when Jingle opens");
+        launchProgramsWhenJingleOpens.setText("程序随Jingle启动");
         mainPanel.add(launchProgramsWhenJingleOpens, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         launchPrograms = new JList();
+        final DefaultListModel defaultListModel1 = new DefaultListModel();
+        launchPrograms.setModel(defaultListModel1);
+        launchPrograms.setToolTipText("");
         mainPanel.add(launchPrograms, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
-        btnLaunchProgsNow = new JButton();
-        btnLaunchProgsNow.setText("Launch Programs Now");
-        mainPanel.add(btnLaunchProgsNow, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         launchMCInstance = new JCheckBox();
         launchMCInstance.setText("启动 Minecraft 实例（需要 MultiMC 或 Prism启动器）");
         mainPanel.add(launchMCInstance, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         instanceLaunchPath = new JButton();
-        instanceLaunchPath.setText("Instance path:");
+        instanceLaunchPath.setText("实例路径：");
         mainPanel.add(instanceLaunchPath, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         launcherExecutablePath = new JButton();
-        launcherExecutablePath.setText("Launcher executable:");
+        launcherExecutablePath.setText("启动器路径：");
         mainPanel.add(launcherExecutablePath, new GridConstraints(6, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        btnLaunchProgsNow = new JButton();
+        btnLaunchProgsNow.setText("启动程序");
+        mainPanel.add(btnLaunchProgsNow, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
